@@ -15,6 +15,9 @@
 }
 
 - (id)dateValueFromNumber:(id)value {
+    if (!value || [value isEqual:[NSNull null]])
+        return nil;
+    
     if ([value isKindOfClass:[NSNumber class]])
         return value;
     
