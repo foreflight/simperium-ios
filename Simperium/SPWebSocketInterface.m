@@ -187,7 +187,7 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
     // Prepare the Request: Handle certificate pinning stuff
     NSString *urlString                 = [NSString stringWithFormat:@"%@/%@/websocket", SPWebsocketURL, self.simperium.appID];
     NSMutableURLRequest *request        = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    request.SR_SSLPinnedCertificates    = [self loadTrustedCertificates];
+//    request.SR_SSLPinnedCertificates    = [self loadTrustedCertificates];
 
     // Open the socket!
     SPWebSocket *newWebSocket           = [[SPWebSocket alloc] initWithURLRequest:request];
