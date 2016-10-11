@@ -76,6 +76,23 @@ typedef NS_ENUM(NSInteger, SPSimperiumErrors) {
                         label:(NSString *)label
               bucketOverrides:(NSDictionary *)bucketOverrides;
 
+// Convenience methods to initialize Simperium with a custom url
+- (instancetype)initWithModel:(NSManagedObjectModel *)model
+                      context:(NSManagedObjectContext *)context
+                  coordinator:(NSPersistentStoreCoordinator *)coordinator
+                      rootURL:(NSString *)rootURL
+                      authURL:(NSString *)authURL
+                 websocketURL:(NSString *)websocketURL;
+
+- (instancetype)initWithModel:(NSManagedObjectModel *)model
+                      context:(NSManagedObjectContext *)context
+                  coordinator:(NSPersistentStoreCoordinator *)coordinator
+                        label:(NSString *)label
+              bucketOverrides:(NSDictionary *)bucketOverrides
+                      rootURL:(NSString *)rootURL
+                      authURL:(NSString *)authURL
+                 websocketURL:(NSString *)websocketURL;
+
 #if TARGET_OS_IPHONE
 // Starts Simperium and displays the auth interface, if needed.
 - (void)authenticateWithAppID:(NSString *)identifier APIKey:(NSString *)key rootViewController:(UIViewController *)controller;
@@ -86,6 +103,8 @@ typedef NS_ENUM(NSInteger, SPSimperiumErrors) {
 
 // Starts Simperium with a given token, with no UI interaction required.
 - (void)authenticateWithAppID:(NSString *)identifier token:(NSString *)token;
+
+- (void)authenticateWithAppID:(NSString *)identifier token:(NSString *)token baseURL:(NSString *)baseURL authURL:(NSString *)authURL websocketURL:(NSString *)websocketURL;
 
 
 #pragma mark ====================================================================================
@@ -166,6 +185,10 @@ typedef void (^SimperiumSignoutCompletion)(void);
 
 // URL to a Simperium server (can be changed to point to a custom installation).
 @property (nonatomic, readwrite, copy) NSString *rootURL;
+
+@property (nonatomic, copy, readonly) NSString *authURL;
+
+@property (nonatomic, copy, readonly) NSString *websocketURL;
 
 // A unique ID for this app (configured at simperium.com).
 @property (nonatomic, readonly, copy) NSString *appID;

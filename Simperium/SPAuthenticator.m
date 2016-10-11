@@ -134,8 +134,8 @@ static NSString * SPUsername    = @"SPUsername";
 // Perform the actual authentication calls to Simperium
 - (void)authenticateWithUsername:(NSString *)username password:(NSString *)password success:(SucceededBlockType)successBlock failure:(FailedBlockType)failureBlock
 {    
-    NSURL *tokenURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/authorize/", SPAuthURL, self.simperium.appID]];
-    SPLogInfo(@"Simperium authenticating: %@", [NSString stringWithFormat:@"%@%@/authorize/", SPAuthURL, self.simperium.appID]);
+    NSURL *tokenURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/authorize/", self.simperium.authURL, self.simperium.appID]];
+    SPLogInfo(@"Simperium authenticating: %@", [NSString stringWithFormat:@"%@%@/authorize/", self.simperium.authURL, self.simperium.appID]);
     SPLogVerbose(@"Simperium username is %@", username);
     
     SPHttpRequest *request = [SPHttpRequest requestWithURL:tokenURL];
@@ -232,7 +232,7 @@ static NSString * SPUsername    = @"SPUsername";
         return;
     }
     
-    NSURL *tokenURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/create/", SPAuthURL, self.simperium.appID]];
+    NSURL *tokenURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/create/", self.simperium.authURL, self.simperium.appID]];
     
     SPHttpRequest *request = [SPHttpRequest requestWithURL:tokenURL];
     NSMutableDictionary *authData = [@{

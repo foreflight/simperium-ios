@@ -185,7 +185,7 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(openWebSocket) object:nil];
     
     // Prepare the Request: Handle certificate pinning stuff
-    NSString *urlString                 = [NSString stringWithFormat:@"%@/%@/websocket", SPWebsocketURL, self.simperium.appID];
+    NSString *urlString                 = [NSString stringWithFormat:@"%@/%@/websocket", self.simperium.websocketURL, self.simperium.appID];
     NSMutableURLRequest *request        = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 //    request.SR_SSLPinnedCertificates    = [self loadTrustedCertificates];
 
