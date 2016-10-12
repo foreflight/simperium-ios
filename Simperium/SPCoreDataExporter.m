@@ -83,6 +83,7 @@ static SPLogLevels logLevel = SPLogLevelsInfo;
 
         [member setObject:[attr name] forKey:@"name"];
         [member setObject:@"default" forKey:@"resolutionPolicy"];
+        member[@"otype"] = attr.userInfo[@"otype"];
         NSString *type = [self simperiumTypeForAttribute: attr];
         NSAssert1(type != nil, @"Simperium couldn't load member %@ (unsupported type)", [attr name]);
         [member setObject: type forKey:@"type"];

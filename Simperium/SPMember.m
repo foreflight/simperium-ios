@@ -30,6 +30,18 @@ NSString * const OP_LIST_DMP        = @"dL";
 NSString * const OP_OBJECT          = @"O";
 NSString * const OP_STRING          = @"d";
 
+
+NSString * const OP_REPLACE_IDENTIFIER = @"replace";
+
++ (NSString *)operationTypeForIdentifier:(NSString *)opIdentifier
+{
+    if ([opIdentifier isEqualToString:OP_REPLACE_IDENTIFIER]) {
+        return OP_REPLACE;
+    }
+    
+    return nil;
+}
+
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [self init];
@@ -38,6 +50,7 @@ NSString * const OP_STRING          = @"d";
         type = [[dict objectForKey:@"type"] copy];
         valueTransformerName = [[dict objectForKey:@"valueTransformerName"] copy];
         modelDefaultValue = [[dict objectForKey:@"defaultValue"] copy];
+        _otype = [[self class] operationTypeForIdentifier:[dict objectForKey:@"otype"]];
     }
     
     return self;

@@ -31,7 +31,7 @@ extern NSString * const OP_STRING;
     NSString *valueTransformerName;
     id modelDefaultValue;
 }
-
+@property (nonatomic, readonly, strong) NSString *otype;
 @property (nonatomic, readonly, strong) NSString *keyName;
 @property (nonatomic, readonly, strong) NSString *valueTransformerName;
 @property (nonatomic, readonly, strong) id modelDefaultValue;
