@@ -229,6 +229,7 @@
 		B5F4C84518FC1B04009F8643 /* NSError+Simperium.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F4C84318FC1B04009F8643 /* NSError+Simperium.h */; };
 		B5F4C84618FC1B04009F8643 /* NSError+Simperium.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F4C84418FC1B04009F8643 /* NSError+Simperium.m */; };
 		B5F65F7A1847DE0100CEF48D /* SPManagedObject+Internals.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F65F791847DE0100CEF48D /* SPManagedObject+Internals.h */; };
+		BD591EEC1DAEA507003CF2CD /* SPMemberTextTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BD591EEB1DAEA507003CF2CD /* SPMemberTextTest.m */; };
 		E265DBD017CD3E0A00070550 /* SPTOSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E265DBCE17CD3E0A00070550 /* SPTOSViewController.h */; };
 		E265DBD117CD3E0A00070550 /* SPTOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E265DBCF17CD3E0A00070550 /* SPTOSViewController.m */; };
 /* End PBXBuildFile section */
@@ -460,6 +461,7 @@
 		B5F4C84418FC1B04009F8643 /* NSError+Simperium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Simperium.m"; sourceTree = "<group>"; };
 		B5F4FE6818A3D7B8006F50C5 /* Simperium.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simperium.podspec; sourceTree = SOURCE_ROOT; };
 		B5F65F791847DE0100CEF48D /* SPManagedObject+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPManagedObject+Internals.h"; sourceTree = "<group>"; };
+		BD591EEB1DAEA507003CF2CD /* SPMemberTextTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMemberTextTest.m; sourceTree = "<group>"; };
 		E265DBCE17CD3E0A00070550 /* SPTOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTOSViewController.h; sourceTree = "<group>"; };
 		E265DBCF17CD3E0A00070550 /* SPTOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTOSViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -894,6 +896,7 @@
 				B597DD58183128FE005E95D7 /* SPWebSocketInterfaceTests.m */,
 				B5DE0E0E1850D0200080C44D /* SPCoreDataStorageTests.m */,
 				B5DF229418B41FB700874C75 /* SPMemberJSONTests.m */,
+				BD591EEB1DAEA507003CF2CD /* SPMemberTextTest.m */,
 				B5E662A918F492AD0065EF11 /* NSStringSimperiumTest.m */,
 				B57FA3B11900568A00957205 /* SPRelationshipResolverTests.m */,
 				B5F068B0186223DF00D0D7B7 /* DiffMatchPatchTest.m */,
@@ -1317,6 +1320,7 @@
 				B5B69C0318325B2C001F0DE1 /* MockSimperium.m in Sources */,
 				B5549FE6184581BF007EA226 /* SPThreadsafeMutableSetTests.m in Sources */,
 				B5E662AA18F492AD0065EF11 /* NSStringSimperiumTest.m in Sources */,
+				BD591EEC1DAEA507003CF2CD /* SPMemberTextTest.m in Sources */,
 				B5C7D7F9183411B900E9109C /* SPPersistentMutableDictionaryTests.m in Sources */,
 				B565ECAA1832940B00D162FF /* XCTestCase+Simperium.m in Sources */,
 				B5A57EAC1951C128006E2455 /* SPIndexProcessorTests.m in Sources */,
