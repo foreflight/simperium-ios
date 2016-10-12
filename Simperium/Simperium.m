@@ -48,6 +48,7 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
 @end
 
 @implementation Simperium
+@synthesize rootURL = _rootURL, authURL = _authURL, websocketURL = _websocketURL;
 
 - (void)dealloc {
     [self stopNetworkManagers];
@@ -99,8 +100,8 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     self = [super init];
     if (self) {
         
-        _authURL = [authURL copy] ?: SPFallbackAuthURL;
-        _websocketURL = [websocketURL copy] ?: SPFallbackWebsocketURL;
+        _authURL = [authURL copy];
+        _websocketURL = [websocketURL copy];
         
         self.rootURL = rootURL;
         self.label                          = label;
@@ -659,6 +660,27 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     // Set the clientID as well, otherwise certain change operations won't work (since they'll appear to come from
     // the same Simperium instance)
     self.clientID = _label;
+}
+
+- (NSString *)rootURL{
+    if (!_rootURL) {
+        return SPFallbackBaseURL;
+    }
+    return _rootURL;
+}
+
+- (NSString *)websocketURL{
+    if (!_websocketURL) {
+        return SPFallbackWebsocketURL;
+    }
+    return _websocketURL;
+}
+
+- (NSString *)authURL{
+    if (!_authURL) {
+        return SPFallbackAuthURL;
+    }
+    return _authURL;
 }
 
 - (void)setRootURL:(NSString *)url {
