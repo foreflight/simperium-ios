@@ -44,10 +44,7 @@
         }
         
         // Construct the diff in the expected format
-        return @{
-                 OP_OP : OP_REPLACE,
-                 OP_VALUE : otherValue
-                 };
+        return [NSDictionary dictionaryWithObjectsAndKeys:OP_REPLACE,OP_OP,otherValue,OP_VALUE, nil];
     }
     
     // Use DiffMatchPatch to find the diff
