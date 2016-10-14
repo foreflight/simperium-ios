@@ -74,11 +74,6 @@
     // if ([thisValue length] == 0)
     //    return otherValue;
     
-    //If otype is replace then avoid diff
-    if ([self.otype isEqualToString:OP_REPLACE]) {
-        return [otherValue copy];
-    }
-    
     NSMutableArray *diffs   = [self.dmp diff_fromDeltaWithText:thisValue andDelta:otherValue error:error];
     NSMutableArray *patches = [self.dmp patch_makeFromOldString:thisValue andDiffs:diffs];
     NSArray *result         = [self.dmp patch_apply:patches toString:thisValue];
@@ -87,11 +82,6 @@
 }
 
 - (NSDictionary *)transform:(id)thisValue otherValue:(id)otherValue oldValue:(id)oldValue error:(NSError **)error {
-    
-    //If otype is replace then avoid applying diff
-    if ([self.otype isEqualToString:OP_REPLACE]) {
-        return [NSDictionary dictionaryWithObjectsAndKeys:OP_REPLACE,OP_OP,thisValue,OP_VALUE, nil];
-    }
     
     // Calculate the delta from the Ghost to the Local + Remote values. Treat any error here as fatal
     NSMutableArray *thisDiffs       = [self.dmp diff_fromDeltaWithText:oldValue andDelta:thisValue error:error];

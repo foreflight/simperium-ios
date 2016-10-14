@@ -39,25 +39,8 @@
                                      OP_VALUE : valueC
                                      };
     
-    NSString *outputDiffAB_on_valueA = [self.textMember applyDiff:valueA otherValue:diffAB[OP_VALUE] error:nil];
-    NSString *expectedOutputDiffAB_on_valueA = [valueB copy];
-    
-    NSString *outputDiffAC_on_valueA = [self.textMember applyDiff:valueA otherValue:diffAC[OP_VALUE] error:nil];
-    NSString *expectedOutputDiffAC_on_valueA = [valueC copy];
-    
-    NSString *outputDiffAC_on_outputDiffAB_on_valueA = [self.textMember applyDiff:outputDiffAB_on_valueA otherValue:diffAC[OP_VALUE] error:nil];
-    NSString *expectedOutputDiffAC_on_outputDiffAB_on_valueA = [valueC copy];
-    
-    NSString *outputDiffAB_on_outputDiffAC_on_valueA = [self.textMember applyDiff:outputDiffAC_on_valueA otherValue:diffAB[OP_VALUE] error:nil];
-    NSString *expectedOutputDiffAB_on_outputDiffAC_on_valueA = [valueB copy];
-    
-    
     XCTAssertEqualObjects(diffAB, expectedDiffAB, @"Error obtaining TextReplace Diff");
     XCTAssertEqualObjects(diffAC, expectedDiffAC, @"Error obtaining TextReplace Diff");
-    XCTAssertEqualObjects(outputDiffAB_on_valueA, expectedOutputDiffAB_on_valueA, @"Error applying TextReplace Diff");
-    XCTAssertEqualObjects(outputDiffAC_on_valueA, expectedOutputDiffAC_on_valueA, @"Error applying TextReplace Diff");
-    XCTAssertEqualObjects(outputDiffAC_on_outputDiffAB_on_valueA, expectedOutputDiffAC_on_outputDiffAB_on_valueA, @"Error applying TextReplace Diff");
-    XCTAssertEqualObjects(outputDiffAB_on_outputDiffAC_on_valueA, expectedOutputDiffAB_on_outputDiffAC_on_valueA, @"Error applying TextReplace Diff");
 }
 
 @end
