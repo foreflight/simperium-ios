@@ -100,10 +100,10 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     self = [super init];
     if (self) {
         
-        _authURL = [authURL copy];
-        _websocketURL = [websocketURL copy];
+        [self updateWithRootURL:rootURL
+                        authURL:authURL
+                   websocketURL:websocketURL];
         
-        self.rootURL = rootURL;
         self.label                          = label;
         self.bucketOverrides                = bucketOverrides;
         self.networkEnabled                 = YES;
@@ -144,10 +144,21 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
 }
 
 - (void)authenticateWithAppID:(NSString *)identifier token:(NSString *)token baseURL:(NSString *)baseURL authURL:(NSString *)authURL websocketURL:(NSString *)websocketURL{
-    self.authURL = authURL;
-    self.websocketURL = websocketURL;
-    self.rootURL = baseURL;
+   [self updateWithRootURL:baseURL
+                   authURL:authURL
+              websocketURL:websocketURL];
     [self authenticateWithAppID:identifier token:token];
+}
+
+- (void)updateWithRootURL:(NSString *)rootURL authURL:(NSString *)authURL websocketURL:(NSString *)websocketURL{
+    
+    NSString *validAuthURL = [NSString sp_validateSchemeWithURLString:authURL] ? authURL : nil;
+    NSString *validWebsocketURL = [NSString sp_validateSchemeWithURLString:websocketURL] ? websocketURL : nil;
+    NSString *validRootURL = [NSString sp_validateSchemeWithURLString:rootURL] ? rootURL : nil;
+    
+    self.authURL = validAuthURL;
+    self.websocketURL = validWebsocketURL;
+    self.rootURL = validRootURL;
 }
 
 #pragma mark ====================================================================================

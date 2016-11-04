@@ -111,6 +111,12 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
     return randomString;
 }
 
++ (BOOL)sp_validateSchemeWithURLString:(NSString *)urlString{
+    NSURL *url = [[NSURL alloc] initWithString:urlString ?: @""];
+    NSString *scheme = url.scheme.lowercaseString;
+    return [scheme isEqualToString:@"ws"] || [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"wss"] || [scheme isEqualToString:@"https"];
+}
+
 - (NSString *)sp_urlEncodeString
 {
     return (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self,
