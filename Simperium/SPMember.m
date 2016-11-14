@@ -38,6 +38,7 @@ NSString * const OP_STRING          = @"d";
         type = [[dict objectForKey:@"type"] copy];
         valueTransformerName = [[dict objectForKey:@"valueTransformerName"] copy];
         modelDefaultValue = [[dict objectForKey:@"defaultValue"] copy];
+        _otype = [dict objectForKey:@"otype"];
     }
     
     return self;

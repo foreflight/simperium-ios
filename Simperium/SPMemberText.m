@@ -37,6 +37,16 @@
     NSAssert([thisValue isKindOfClass:[NSString class]] && [otherValue isKindOfClass:[NSString class]],
             @"Simperium error: couldn't diff strings because their classes weren't NSString");
     
+    //If otype is replace then avoid diff
+    if ([self.otype isEqualToString:OP_REPLACE]) {
+        if ([thisValue isEqualToString: otherValue]) {
+            return @{ };
+        }
+        
+        // Construct the diff in the expected format
+        return [NSDictionary dictionaryWithObjectsAndKeys:OP_REPLACE,OP_OP,otherValue,OP_VALUE, nil];
+    }
+    
     // Use DiffMatchPatch to find the diff
     // Use some logic from MobWrite to clean stuff up
     NSMutableArray *diffList = [self.dmp diff_mainOfOldString:thisValue andNewString:otherValue];
@@ -72,6 +82,7 @@
 }
 
 - (NSDictionary *)transform:(id)thisValue otherValue:(id)otherValue oldValue:(id)oldValue error:(NSError **)error {
+    
     // Calculate the delta from the Ghost to the Local + Remote values. Treat any error here as fatal
     NSMutableArray *thisDiffs       = [self.dmp diff_fromDeltaWithText:oldValue andDelta:thisValue error:error];
     NSMutableArray *otherDiffs      = [self.dmp diff_fromDeltaWithText:oldValue andDelta:otherValue error:error];

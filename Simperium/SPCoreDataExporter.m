@@ -9,7 +9,7 @@
 #import "SPCoreDataExporter.h"
 #import "SPManagedObject.h"
 #import "SPLogger.h"
-
+#import "SPMember.h"
 
 
 #pragma mark ====================================================================================
@@ -17,13 +17,22 @@
 #pragma mark ====================================================================================
 
 static SPLogLevels logLevel = SPLogLevelsInfo;
-
+NSString * const OP_REPLACE_IDENTIFIER = @"replace";
 
 #pragma mark ====================================================================================
 #pragma mark SPCoreDataExporter
 #pragma mark ====================================================================================
 
 @implementation SPCoreDataExporter
+
++ (NSString *)operationTypeForIdentifier:(NSString *)opIdentifier
+{
+    if ([opIdentifier isEqualToString:OP_REPLACE_IDENTIFIER]) {
+        return OP_REPLACE;
+    }
+    
+    return nil;
+}
 
 - (NSString *)simperiumTypeForAttribute:(NSAttributeDescription *)attribute
 {
@@ -83,6 +92,7 @@ static SPLogLevels logLevel = SPLogLevelsInfo;
 
         [member setObject:[attr name] forKey:@"name"];
         [member setObject:@"default" forKey:@"resolutionPolicy"];
+        member[@"otype"] = [[self class] operationTypeForIdentifier:attr.userInfo[@"otype"]];
         NSString *type = [self simperiumTypeForAttribute: attr];
         NSAssert1(type != nil, @"Simperium couldn't load member %@ (unsupported type)", [attr name]);
         [member setObject: type forKey:@"type"];
