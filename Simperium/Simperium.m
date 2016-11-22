@@ -42,7 +42,13 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
 #pragma mark Simperium
 #pragma mark ====================================================================================
 
+@interface Simperium ()
+@property (nonatomic, copy) NSString *authURL;
+@property (nonatomic, copy) NSString *websocketURL;
+@end
+
 @implementation Simperium
+@synthesize rootURL = _rootURL, authURL = _authURL, websocketURL = _websocketURL;
 
 - (void)dealloc {
     [self stopNetworkManagers];
@@ -68,9 +74,35 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
                   coordinator:(NSPersistentStoreCoordinator *)coordinator
                         label:(NSString *)label
               bucketOverrides:(NSDictionary *)bucketOverrides {
+    
+    return [self initWithModel:model context:context coordinator:coordinator label:@"" bucketOverrides:nil rootURL:nil authURL:nil websocketURL:nil];
+}
 
+- (instancetype)initWithModel:(NSManagedObjectModel *)model
+                      context:(NSManagedObjectContext *)context
+                  coordinator:(NSPersistentStoreCoordinator *)coordinator
+                      rootURL:(NSString *)rootURL
+                      authURL:(NSString *)authURL
+                 websocketURL:(NSString *)websocketURL{
+    
+    return [self initWithModel:model context:context coordinator:coordinator label:@"" bucketOverrides:nil rootURL:rootURL authURL:authURL websocketURL:websocketURL];
+}
+
+- (instancetype)initWithModel:(NSManagedObjectModel *)model
+                      context:(NSManagedObjectContext *)context
+                  coordinator:(NSPersistentStoreCoordinator *)coordinator
+                        label:(NSString *)label
+              bucketOverrides:(NSDictionary *)bucketOverrides
+                      rootURL:(NSString *)rootURL
+                      authURL:(NSString *)authURL
+                 websocketURL:(NSString *)websocketURL{
+    
     self = [super init];
     if (self) {
+        
+        [self updateWithRootURL:rootURL
+                        authURL:authURL
+                   websocketURL:websocketURL];
         
         self.label                          = label;
         self.bucketOverrides                = bucketOverrides;
@@ -111,6 +143,23 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     return self;
 }
 
+- (void)authenticateWithAppID:(NSString *)identifier token:(NSString *)token baseURL:(NSString *)baseURL authURL:(NSString *)authURL websocketURL:(NSString *)websocketURL{
+   [self updateWithRootURL:baseURL
+                   authURL:authURL
+              websocketURL:websocketURL];
+    [self authenticateWithAppID:identifier token:token];
+}
+
+- (void)updateWithRootURL:(NSString *)rootURL authURL:(NSString *)authURL websocketURL:(NSString *)websocketURL{
+    
+    NSString *validAuthURL = [NSString sp_validateSchemeWithURLString:authURL] ? authURL : nil;
+    NSString *validWebsocketURL = [NSString sp_validateSchemeWithURLString:websocketURL] ? websocketURL : nil;
+    NSString *validRootURL = [NSString sp_validateSchemeWithURLString:rootURL] ? rootURL : nil;
+    
+    self.authURL = validAuthURL;
+    self.websocketURL = validWebsocketURL;
+    self.rootURL = validRootURL;
+}
 
 #pragma mark ====================================================================================
 #pragma mark Init Helpers
@@ -387,7 +436,6 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     // Keep the keys!
     self.appID      = identifier;
     self.APIKey     = key;
-    self.rootURL    = SPBaseURL;
     
     // With everything configured, all objects can now be validated. This will pick up any objects that aren't yet
     // known to Simperium (for the case where you're adding Simperium to an existing app).
@@ -623,6 +671,27 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     // Set the clientID as well, otherwise certain change operations won't work (since they'll appear to come from
     // the same Simperium instance)
     self.clientID = _label;
+}
+
+- (NSString *)rootURL{
+    if (!_rootURL) {
+        return SPFallbackBaseURL;
+    }
+    return _rootURL;
+}
+
+- (NSString *)websocketURL{
+    if (!_websocketURL) {
+        return SPFallbackWebsocketURL;
+    }
+    return _websocketURL;
+}
+
+- (NSString *)authURL{
+    if (!_authURL) {
+        return SPFallbackAuthURL;
+    }
+    return _authURL;
 }
 
 - (void)setRootURL:(NSString *)url {
