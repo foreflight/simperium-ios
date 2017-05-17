@@ -30,11 +30,12 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
 #pragma mark ====================================================================================
 
 @interface SPRelationship ()
-@property (nonatomic, strong) NSString *sourceKey;
-@property (nonatomic, strong) NSString *sourceAttribute;
-@property (nonatomic, strong) NSString *sourceBucket;
-@property (nonatomic, strong) NSString *targetKey;
-@property (nonatomic, strong) NSString *targetBucket;
+@property (nonatomic, strong) NSString      *sourceKey;
+@property (nonatomic, strong) NSString      *sourceAttribute;
+@property (nonatomic, strong) NSString      *sourceBucket;
+@property (nonatomic, strong) NSString      *targetKey;
+@property (nonatomic, strong) NSString      *targetBucket;
+@property (nonatomic, strong) NSDictionary  *dictionaryRepresentation;
 @end
 
 
@@ -59,17 +60,6 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
     return  [_sourceKey hash] + [_sourceAttribute hash] + [_sourceBucket hash] + [_targetKey hash] + [_targetBucket hash];
 }
 
-- (NSDictionary *)toDictionary {
-    return @{
-        SPRelationshipsSourceKey        : _sourceKey,
-        SPRelationshipsSourceBucket     : _sourceBucket,
-        SPRelationshipsSourceAttribute  : _sourceAttribute,
-        SPRelationshipsTargetBucket     : _targetBucket,
-        SPRelationshipsTargetKey        : _targetKey
-    };
-}
-
-
 #pragma mark - Public Helpers
 
 + (NSArray *)serializeFromArray:(NSArray *)relationships {
@@ -77,7 +67,7 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
     NSMutableArray *serialized = [NSMutableArray array];
     
     for (SPRelationship *relationship in relationships) {
-        [serialized addObject:[relationship toDictionary]];
+        [serialized addObject:[relationship dictionaryRepresentation]];
     }
     
     return serialized;
@@ -96,6 +86,13 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
         relationship.sourceBucket       = rawRelationship[SPRelationshipsSourceBucket];
         relationship.targetKey          = rawRelationship[SPRelationshipsTargetKey];
         relationship.targetBucket       = rawRelationship[SPRelationshipsTargetBucket];
+        relationship.dictionaryRepresentation = @{
+                                                  SPRelationshipsSourceKey        : relationship.sourceKey,
+                                                  SPRelationshipsSourceBucket     : relationship.sourceBucket,
+                                                  SPRelationshipsSourceAttribute  : relationship.sourceAttribute,
+                                                  SPRelationshipsTargetBucket     : relationship.targetBucket,
+                                                  SPRelationshipsTargetKey        : relationship.targetKey
+                                                  };
         
         [parsed addObject:relationship];
     }
@@ -120,6 +117,13 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
             relationship.sourceBucket       = rawRelationship[SPLegacyPathBucket];
             relationship.targetKey          = targetKey;
             relationship.targetBucket       = @"";
+            relationship.dictionaryRepresentation = @{
+                                                      SPRelationshipsSourceKey        : relationship.sourceKey,
+                                                      SPRelationshipsSourceBucket     : relationship.sourceBucket,
+                                                      SPRelationshipsSourceAttribute  : relationship.sourceAttribute,
+                                                      SPRelationshipsTargetBucket     : relationship.targetBucket,
+                                                      SPRelationshipsTargetKey        : relationship.targetKey
+                                                      };
             
             [parsed addObject:relationship];
         }
@@ -141,6 +145,13 @@ static NSString * const SPLegacyPathAttribute           = @"SPPathAttribute";
     relationship.sourceBucket       = sourceBucket;
     relationship.targetKey          = targetKey;
     relationship.targetBucket       = targetBucket;
+    relationship.dictionaryRepresentation = @{
+                                              SPRelationshipsSourceKey        : relationship.sourceKey,
+                                              SPRelationshipsSourceBucket     : relationship.sourceBucket,
+                                              SPRelationshipsSourceAttribute  : relationship.sourceAttribute,
+                                              SPRelationshipsTargetBucket     : relationship.targetBucket,
+                                              SPRelationshipsTargetKey        : relationship.targetKey
+                                              };
     
     return relationship;
 }

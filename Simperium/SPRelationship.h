@@ -16,11 +16,12 @@
 
 @interface SPRelationship : NSObject
 
-@property (nonatomic, strong, readonly) NSString *sourceKey;
-@property (nonatomic, strong, readonly) NSString *sourceAttribute;
-@property (nonatomic, strong, readonly) NSString *sourceBucket;
-@property (nonatomic, strong, readonly) NSString *targetKey;
-@property (nonatomic, strong, readonly) NSString *targetBucket;
+@property (nonatomic, strong, readonly) NSString        *sourceKey;
+@property (nonatomic, strong, readonly) NSString        *sourceAttribute;
+@property (nonatomic, strong, readonly) NSString        *sourceBucket;
+@property (nonatomic, strong, readonly) NSString        *targetKey;
+@property (nonatomic, strong, readonly) NSString        *targetBucket;
+@property (nonatomic, strong, readonly) NSDictionary    *dictionaryRepresentation;
 
 + (NSArray *)serializeFromArray:(NSArray *)relationships;
 
