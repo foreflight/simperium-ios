@@ -163,6 +163,8 @@
 		46EE3D41171C975D00E6F0A5 /* SimperiumComplexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EE3D40171C975D00E6F0A5 /* SimperiumComplexTests.m */; };
 		46EE3D44171C978E00E6F0A5 /* SimperiumAuxiliaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EE3D43171C978D00E6F0A5 /* SimperiumAuxiliaryTests.m */; };
 		46EE3D57171D0C8E00E6F0A5 /* SimperiumErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EE3D56171D0C8E00E6F0A5 /* SimperiumErrorTests.m */; };
+		A34519951F05A2A20014F03B /* AJHitLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A34519931F05A2A20014F03B /* AJHitLogger.h */; };
+		A34519961F05A2A20014F03B /* AJHitLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A34519941F05A2A20014F03B /* AJHitLogger.m */; };
 		B51397F11947612B004C1416 /* SPChangeProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B51397F01947612B004C1416 /* SPChangeProcessorTests.m */; };
 		B525F1EB188422FF003E4AA0 /* STKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = B525F1E9188422FF003E4AA0 /* STKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B525F1EC188422FF003E4AA0 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B525F1EA188422FF003E4AA0 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -403,6 +405,8 @@
 		46EE3D40171C975D00E6F0A5 /* SimperiumComplexTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimperiumComplexTests.m; sourceTree = "<group>"; };
 		46EE3D43171C978D00E6F0A5 /* SimperiumAuxiliaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimperiumAuxiliaryTests.m; sourceTree = "<group>"; };
 		46EE3D56171D0C8E00E6F0A5 /* SimperiumErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimperiumErrorTests.m; sourceTree = "<group>"; };
+		A34519931F05A2A20014F03B /* AJHitLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHitLogger.h; sourceTree = "<group>"; };
+		A34519941F05A2A20014F03B /* AJHitLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHitLogger.m; sourceTree = "<group>"; };
 		B51397F01947612B004C1416 /* SPChangeProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChangeProcessorTests.m; sourceTree = "<group>"; };
 		B525F1E9188422FF003E4AA0 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
 		B525F1EA188422FF003E4AA0 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
@@ -692,6 +696,8 @@
 				264CD92B135DFE6D00C51BAD /* Simperium.m */,
 				264CD930135DFE6D00C51BAD /* SPEnvironment.h */,
 				264CD931135DFE6D00C51BAD /* SPEnvironment.m */,
+				A34519931F05A2A20014F03B /* AJHitLogger.h */,
+				A34519941F05A2A20014F03B /* AJHitLogger.m */,
 				B5F4FE6818A3D7B8006F50C5 /* Simperium.podspec */,
 				2622FD03147F23D400C8EEB4 /* Object */,
 				2622FCFF147F225800C8EEB4 /* Diffing */,
@@ -999,6 +1005,7 @@
 				B5F4C84518FC1B04009F8643 /* NSError+Simperium.h in Headers */,
 				267CE903156C0FD20028801C /* SPJSONStorage.h in Headers */,
 				267CE905156C0FD20028801C /* SPObject.h in Headers */,
+				A34519951F05A2A20014F03B /* AJHitLogger.h in Headers */,
 				267CE907156C0FD20028801C /* SPSchema.h in Headers */,
 				267CE90D156C351B0028801C /* SPStorageProvider.h in Headers */,
 				B5549FE318457F72007EA226 /* SPThreadsafeMutableSet.h in Headers */,
@@ -1218,6 +1225,7 @@
 				264CD93D135DFE6D00C51BAD /* SPManagedObject.m in Sources */,
 				264CD941135DFE6D00C51BAD /* SPEnvironment.m in Sources */,
 				B525F1EC188422FF003E4AA0 /* STKeychain.m in Sources */,
+				A34519961F05A2A20014F03B /* AJHitLogger.m in Sources */,
 				B5EC2C2618858E3E0067E3B8 /* SPPersistentMutableSet.m in Sources */,
 				264CD943135DFE6D00C51BAD /* SPGhost.m in Sources */,
 				264CD945135DFE6D00C51BAD /* SPMember.m in Sources */,
