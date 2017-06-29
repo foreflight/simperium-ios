@@ -17,6 +17,7 @@
 #import "SPWebSocketChannel.h"
 #import "SPEnvironment.h"
 #import <Security/Security.h>
+#import "AJHitLogger.h"
 
 
 
@@ -386,21 +387,29 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
     
     // Messages: [CHANNEL:COMMAND:DATA]
     if ([command isEqualToString:COM_AUTH]) {
+        [AJHitLogger recordReceivedAction:@"auth" forBucket:bucket];
         [channel handleAuthResponse:data bucket:bucket];
     } else if ([command isEqualToString:COM_INDEX]) {
+        [AJHitLogger recordReceivedAction:@"index" forBucket:bucket];
         [channel handleIndexResponse:data bucket:bucket];
     } else if ([command isEqualToString:COM_CHANGE_VERSION]) {
+        [AJHitLogger recordReceivedAction:@"change_version" forBucket:bucket];
         [channel requestLatestVersionsForBucket:bucket];
     } else if ([command isEqualToString:COM_CHANGE]) {
+        [AJHitLogger recordReceivedAction:@"change" forBucket:bucket];
         NSArray *changes = [data sp_objectFromJSONString];
         [channel handleRemoteChanges:changes bucket:bucket];
     } else if ([command isEqualToString:COM_ENTITY]) {
+        [AJHitLogger recordReceivedAction:@"entity" forBucket:bucket];
         [channel handleVersionResponse:data bucket:bucket];
     } else if ([command isEqualToString:COM_OPTIONS]) {
+        [AJHitLogger recordReceivedAction:@"options" forBucket:bucket];
         [channel handleOptions:data bucket:bucket];
     } else if ([command isEqualToString:COM_INDEX_STATE]) {
+        [AJHitLogger recordReceivedAction:@"index_state" forBucket:bucket];
         [channel handleIndexStatusRequest:bucket];
     } else if ([command isEqualToString:COM_ERROR]) {
+        [AJHitLogger recordReceivedAction:@"error" forBucket:bucket];
         SPLogVerbose(@"Simperium returned a command error (?) for bucket %@", bucket.name);
     }
 }

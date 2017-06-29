@@ -23,6 +23,7 @@
 #import "NSString+Simperium.h"
 #import "SPLogger.h"
 #import "SRWebSocket.h"
+#import "AJHitLogger.h"
 
 
 
@@ -576,6 +577,7 @@ typedef void(^SPWebSocketSyncedBlockType)(void);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *message = [NSString stringWithFormat:@"%d:c:%@", self.number, [change sp_JSONString]];
+        [AJHitLogger recordSendChangeForBucketName:self.name];
         SPLogVerbose(@"Simperium sending change (%@-%@) %@", self.name, self.simperium.label, message);
         [self.webSocketManager send:message];
     });
