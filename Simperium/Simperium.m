@@ -101,9 +101,9 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     self = [super init];
     if (self) {
         
-        [NSTimer scheduledTimerWithTimeInterval:15 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [AJHitLogger dumpHitSummary];
-        }];
+//        [NSTimer scheduledTimerWithTimeInterval:15 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//            [AJHitLogger dumpHitSummary];
+//        }];
         
         [self updateWithRootURL:rootURL
                         authURL:authURL
