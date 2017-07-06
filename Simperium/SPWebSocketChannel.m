@@ -576,6 +576,10 @@ typedef void(^SPWebSocketSyncedBlockType)(void);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *message = [NSString stringWithFormat:@"%d:c:%@", self.number, [change sp_JSONString]];
+        if ([self.name.lowercaseString containsString:@"bucket-name-to-log"]) {
+            NSLog(@"Sending this change for %@: %@", self.name, change);
+            NSLog(@"...");
+        }
         SPLogVerbose(@"Simperium sending change (%@-%@) %@", self.name, self.simperium.label, message);
         [self.webSocketManager send:message];
     });

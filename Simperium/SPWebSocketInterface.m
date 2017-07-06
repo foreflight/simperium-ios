@@ -393,6 +393,10 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
         [channel requestLatestVersionsForBucket:bucket];
     } else if ([command isEqualToString:COM_CHANGE]) {
         NSArray *changes = [data sp_objectFromJSONString];
+        if ([bucket.name.lowercaseString containsString:@"bucket-name-to-log"]) {
+            NSLog(@"Received these changes for %@: %@", bucket.name, changes);
+            NSLog(@"...");
+        }
         [channel handleRemoteChanges:changes bucket:bucket];
     } else if ([command isEqualToString:COM_ENTITY]) {
         [channel handleVersionResponse:data bucket:bucket];
