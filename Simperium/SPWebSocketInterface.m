@@ -398,6 +398,10 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
     } else if ([command isEqualToString:COM_CHANGE]) {
         [AJHitLogger recordReceivedAction:@"change" forBucket:bucket];
         NSArray *changes = [data sp_objectFromJSONString];
+        if ([bucket.name.lowercaseString containsString:@"bucket-name-to-log"]) {
+            NSLog(@"Received these changes for %@: %@", bucket.name, changes);
+            NSLog(@"...");
+        }
         [channel handleRemoteChanges:changes bucket:bucket];
     } else if ([command isEqualToString:COM_ENTITY]) {
         [AJHitLogger recordReceivedAction:@"entity" forBucket:bucket];
