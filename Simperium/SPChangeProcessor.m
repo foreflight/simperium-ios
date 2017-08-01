@@ -276,8 +276,20 @@ static int const SPChangeProcessorMaxPendingChanges = 200;
         NSDictionary *diff      = change[CH_VALUE];
         NSError *theError       = nil;
         
+        NSDictionary *diffToApply = nil;
+        
+        if (newlyAdded) {
+            NSMutableDictionary *currentDiff = [[bucket.differ diffFromDictionary:@{} toObject:object] mutableCopy];
+            if (currentDiff.count > 0) {
+                [currentDiff addEntriesFromDictionary:diff];
+                diffToApply = currentDiff;
+            }
+        }else{
+            diffToApply = diff;
+        }
+        
         // Apply the diff to the ghost and store the new data in the object's ghost
-        if (![bucket.differ applyGhostDiffFromDictionary:diff toObject:object error:&theError]) {
+        if (![bucket.differ applyGhostDiffFromDictionary:diffToApply toObject:object error:&theError]) {
             SPLogError(@"Simperium error during applyGhostDiff: %@", theError.localizedDescription);
             if (error) {
                 *error = [NSError sp_errorWithDomain:NSStringFromClass([self class]) code:SPProcessorErrorsReceivedInvalidChange description:theError.description];
