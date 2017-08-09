@@ -126,6 +126,8 @@ typedef void (^SimperiumBackgroundFetchCompletion)(UIBackgroundFetchResult resul
 // Once you have a bucket instance, you can set a SPBucketDelegate to react to changes.
 - (SPBucket *)bucketForName:(NSString *)name;
 
++ (BOOL)shouldLogChangeForBucketName:(NSString *)name;
+
 // Convenience methods for accessing the Core Data stack.
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSManagedObjectContext *)writerManagedObjectContext;
