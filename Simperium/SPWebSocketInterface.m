@@ -393,7 +393,7 @@ typedef NS_ENUM(NSInteger, SPMessageIndex) {
         [channel requestLatestVersionsForBucket:bucket];
     } else if ([command isEqualToString:COM_CHANGE]) {
         NSArray *changes = [data sp_objectFromJSONString];
-        if ([bucket.name.lowercaseString containsString:@"bucket-name-to-log"]) {
+        if ([Simperium shouldLogChangeForBucketName:bucket.name]) {
             NSLog(@"Received these changes for %@: %@", bucket.name, changes);
             NSLog(@"...");
         }

@@ -242,6 +242,18 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
     return bucket;
 }
 
++ (BOOL)shouldLogChangeForBucketName:(NSString *)name {
+    NSArray<NSString *> *keywordsToLog = @[
+                                           @"name-to-log"
+                                           ];
+    for (NSString *keyword in keywordsToLog) {
+        if ([name.lowercaseString containsString:keyword.lowercaseString]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 
 #pragma mark ====================================================================================
 #pragma mark Networking
