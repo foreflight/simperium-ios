@@ -195,7 +195,7 @@ typedef NS_ENUM(NSInteger, SPVersion) {
             [objectKeys addObject:versionData[0]];
         }
         
-        NSDictionary *objects = [storage faultObjectsForKeys:objectKeys bucketName:bucket.name];
+        NSMutableDictionary *objects = [[storage faultObjectsForKeys:objectKeys bucketName:bucket.name] mutableCopy];
         
         // Process all version data
         for (NSArray *versionData in versions)
@@ -212,6 +212,7 @@ typedef NS_ENUM(NSInteger, SPVersion) {
             // The object doesn't exist locally yet, so create it
             if (!object) {
                 object          = [storage insertNewObjectForBucketName:bucket.name simperiumKey:key];
+                objects[key] = object;
                 object.bucket   = bucket; // set it manually since it won't be set automatically yet
                 [object loadMemberData:data];
                 
