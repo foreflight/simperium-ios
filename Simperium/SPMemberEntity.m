@@ -60,7 +60,8 @@ static SPLogLevels logLevel = SPLogLevelsWarn;
     NSString *simperiumKey = dict[key];
     
     // With optional 1 to 1 relationships, there might not be an object
-    if (!simperiumKey || simperiumKey.length == 0) {
+    // treat NSNull like nil
+    if (!simperiumKey || [simperiumKey isEqual:[NSNull null]] || simperiumKey.length == 0) {
         return nil;
     }
     
