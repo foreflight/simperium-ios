@@ -12,6 +12,7 @@
 #import "SPManagedObject.h"
 #import "SPAuthenticator.h"
 #import "SPUser.h"
+#import "SPLogger.h"
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIApplication.h>
@@ -158,6 +159,8 @@ typedef void (^SimperiumSignoutCompletion)(void);
 // Opens an authentication interface if necessary.
 - (BOOL)authenticateIfNecessary;
 
+- (SPLogger *)logger;
+
 // A SimperiumDelegate for system callbacks.
 @property (nonatomic, readwrite, weak) id<SimperiumDelegate> delegate;
 
@@ -166,6 +169,7 @@ typedef void (^SimperiumSignoutCompletion)(void);
 
 // Toggle verbose logging.
 @property (nonatomic, readwrite, assign) BOOL verboseLoggingEnabled;
+
 
 // Toggle remote logging.
 @property (nonatomic, readwrite, assign) BOOL remoteLoggingEnabled;
