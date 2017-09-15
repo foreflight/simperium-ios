@@ -34,7 +34,7 @@ NSTimeInterval const SPBackgroundSyncTimeout    = 20.0f;
 #ifdef DEBUG
 static SPLogLevels logLevel                     = SPLogLevelsVerbose;
 #else
-static SPLogLevels logLevel                     = SPLogLevelsInfo;
+static SPLogLevels logLevel                     = SPLogLevelsOff;
 #endif
 
 
@@ -702,6 +702,10 @@ static SPLogLevels logLevel                     = SPLogLevelsInfo;
 - (void)setVerboseLoggingEnabled:(BOOL)on {
     _verboseLoggingEnabled = on;
     [[SPLogger sharedInstance] setSharedLogLevel:on ? SPLogLevelsVerbose : SPLogLevelsWarn];
+}
+
+- (SPLogger *)logger{
+    return [SPLogger sharedInstance];
 }
 
 - (BOOL)objectsShouldSync {

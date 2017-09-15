@@ -9,7 +9,6 @@
 #import "Simperium.h"
 #import "SPCoreDataStorage.h"
 #import "SPAuthenticator.h"
-#import "SPLogger.h"
 #import "SPJSONStorage.h"
 #import "SPReachability.h"
 
