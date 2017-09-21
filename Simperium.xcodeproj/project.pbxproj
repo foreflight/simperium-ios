@@ -1516,6 +1516,114 @@
 			};
 			name = Release;
 		};
+		A31309D61F7422B000559078 /* Debug - Fast Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = Headers;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
+			};
+			name = "Debug - Fast Build";
+		};
+		A31309D71F7422B000559078 /* Debug - Fast Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				DSTROOT = /tmp/Simperium.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+					"\"$(SRCROOT)/../../../simperium-ios-private/External\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simperium/Simperium-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386 x86_64 arm64";
+			};
+			name = "Debug - Fast Build";
+		};
+		A31309D81F7422B000559078 /* Debug - Fast Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimperiumTests/SimperiumTests-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "SimperiumTests/IntegrationTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Debug - Fast Build";
+		};
+		A31309D91F7422B000559078 /* Debug - Fast Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimperiumTests/SimperiumTests-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "SimperiumTests/UnitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = UnitTests;
+			};
+			name = "Debug - Fast Build";
+		};
+		A31309DA1F7422B000559078 /* Debug - Fast Build */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_THUMB_SUPPORT = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Debug - Fast Build";
+		};
 		B5E8D3381831237500AE2C5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1569,6 +1677,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				264CD91C135DFD7A00C51BAD /* Debug */,
+				A31309D61F7422B000559078 /* Debug - Fast Build */,
 				264CD91D135DFD7A00C51BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1578,6 +1687,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				264CD91F135DFD7A00C51BAD /* Debug */,
+				A31309D71F7422B000559078 /* Debug - Fast Build */,
 				264CD920135DFD7A00C51BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1587,6 +1697,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				264CD922135DFD7A00C51BAD /* Debug */,
+				A31309D81F7422B000559078 /* Debug - Fast Build */,
 				264CD923135DFD7A00C51BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1596,6 +1707,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				26563AEB14FDAD0F0081C8C1 /* Debug */,
+				A31309DA1F7422B000559078 /* Debug - Fast Build */,
 				26563AEC14FDAD0F0081C8C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1605,6 +1717,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5E8D3381831237500AE2C5A /* Debug */,
+				A31309D91F7422B000559078 /* Debug - Fast Build */,
 				B5E8D3391831237500AE2C5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
