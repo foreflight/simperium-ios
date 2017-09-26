@@ -192,7 +192,12 @@ static SPLogLevels logLevel = SPLogLevelsInfo;
         if ([operation isEqualToString:OP_OBJECT_ADD] || [operation isEqualToString:OP_REPLACE]) {
             // Newly added / replaced member: set the value
             id otherValue = change[OP_VALUE];
-            [newMemberData setObject:otherValue forKey:key];
+            if (otherValue) {
+                [newMemberData setObject:otherValue forKey:key];
+            }else{
+                //if nil treat it as a remove operation
+                [newMemberData removeObjectForKey:key];
+            }
         } else if ([operation isEqualToString:OP_OBJECT_REMOVE]) {
             [newMemberData removeObjectForKey:key];
         } else {
