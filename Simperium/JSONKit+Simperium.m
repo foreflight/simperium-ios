@@ -8,11 +8,7 @@
 
 #import "JSONKit+Simperium.h"
 
-#ifdef DEBUG
-static NSJSONWritingOptions const SPJSONWritingOptions = NSJSONWritingPrettyPrinted;
-#else
 static NSJSONWritingOptions const SPJSONWritingOptions = 0;
-#endif
 
 @implementation NSJSONSerialization (SPJSONKitAdapterCategories)
 
